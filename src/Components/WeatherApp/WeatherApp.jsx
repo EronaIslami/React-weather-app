@@ -105,7 +105,7 @@ const WeatherApp = () => {
         <img src={icon} alt="" height="130px" width="170px" />
       </div>
       <div className='weather-temperature'>? °C </div>
-      <div className='weather-location'>Kosova</div>
+      <div className='weather-location'>Location</div>
       <div className='data-container'>
         <div className='element'>
           <img src={humidity_icon} alt="" height="60px" width="80px" className='icon'/>
