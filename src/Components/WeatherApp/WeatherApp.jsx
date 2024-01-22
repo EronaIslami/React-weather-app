@@ -1,4 +1,3 @@
-// MyComponent.jsx
 import React, { useState } from 'react'; //6.9k (gzipped: 2.7k)
 import "./WeatherApp.css"
 
@@ -23,20 +22,19 @@ import backgroundVid from "../Photos/planet.mp4";
 const WeatherApp = () => {
   let API_key = "50a37d8904d86df8f19799ab5d1d62bd";
 
-  const [icon,setIcon] = useState(cloud_icon);//A piece of React state using the useState hook. icon represents the weather icon, and setIcon is a function to update its value. It's initialized with the cloud_icon image.
+  const [icon,setIcon] = useState(cloud_icon);
 
-  const search = async () => { //Convert function in async function
-      const element = document.getElementsByClassName("cityInput");//It uses the document.getElementsByClassName method to get the input element with the class "cityInput".
-      //We check if its empty or not
+  const search = async () => { 
+      const element = document.getElementsByClassName("cityInput");
+
       if(element[0].value === ""){
         return 0;
       }
-      let url =`https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${API_key}`; //Constructs the API URL for the weather data based on the entered city.
-      let response = await fetch(url);//get the data in response variable
-      let data = await response.json();//Pass the data in json format
+      let url =`https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${API_key}`; 
+      let response = await fetch(url);
+      let data = await response.json();
 
 
-      //// Update various elements on the page with weather-related information
       const humidity = document.getElementsByClassName("humidity-value");
       const wind = document.getElementsByClassName("wind-value");
       const temp = document.getElementsByClassName("weather-temperature");
@@ -94,8 +92,7 @@ const WeatherApp = () => {
   return (
     <div className='container'>
       <div className='backgroundVideo'>
-        <video src={backgroundVid} autoPlay loop muted /> </div>
-
+        <video src={backgroundVid} autoPlay loop muted /></div>
 
     <div className='weather-container'>
       <div className='search'>
@@ -107,27 +104,26 @@ const WeatherApp = () => {
       <div className='weather-image'>
         <img src={icon} alt="" height="130px" width="170px" />
       </div>
-      <div className='weather-temperature'>5°C </div>
+      <div className='weather-temperature'>? °C </div>
       <div className='weather-location'>Kosova</div>
       <div className='data-container'>
         <div className='element'>
           <img src={humidity_icon} alt="" height="60px" width="80px" className='icon'/>
           <div className='data'>
-            <div className='humidity-value'>64%</div>
+            <div className='humidity-value'>? %</div>
             <div className='text'>Humidity</div>
           </div>
         </div>
         <div className='element'>
           <img src={wind_icon} alt="" height="60px" width="80px" className='icon'/>
           <div className='data'>
-            <div className='wind-value'>18 km/h</div>
+            <div className='wind-value'>? km/h</div>
             <div className='text'>Wind Speed</div>
           </div>
         </div>
       </div>
     </div>
     
-
     </div>
   );
 };
